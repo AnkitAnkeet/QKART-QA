@@ -174,11 +174,13 @@ public class Home {
                     if(quantity > actualQuantity){
                        WebElement plus =parentElement.findElement(By.xpath(".//*[@data-testid='AddOutlinedIcon']"));
                        plus.click();
+                       Thread.sleep(5000);
                     }
-                     else if(quantity<actualQuantity){
+                     else if(quantity < actualQuantity){
                         WebElement minus =parentElement.findElement(By.xpath(".//*[@data-testid='RemoveOutlinedIcon']"));
                         minus.click();
-                      }else if(quantity==actualQuantity){
+                        Thread.sleep(5000);
+                      }else if(quantity == actualQuantity){
                         break;
                       }
                 }

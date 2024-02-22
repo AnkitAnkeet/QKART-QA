@@ -102,10 +102,9 @@ public class Checkout {
             // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 07: MILESTONE 6
             
             WebElement balanceButton = driver.findElement(By.xpath("//*[text()='You do not have enough balance in your wallet for this purchase']"));
-           balanceButton.isDisplayed();
+           Boolean status =balanceButton.isDisplayed();
+            return status;
            
-    
-            return true;
         } catch (Exception e) {
             System.out.println("Exception while verifying insufficient balance message: " + e.getMessage());
             return false;
