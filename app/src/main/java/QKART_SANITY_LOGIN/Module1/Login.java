@@ -56,7 +56,11 @@ public class Login {
         try {
             // Find the username label (present on the top right of the page)
             WebElement username_label;
+// <<<<<<< HEAD
              username_label = this.driver.findElement(By.className("username-text"));
+// =======
+//             username_label = this.driver.findElement(By.className("username-text"));
+// >>>>>>> 961fff5de153139347e4eba097574db5c6be6b6a
             return username_label.getText().equals(Username);
         } catch (Exception e) {
             return false;
