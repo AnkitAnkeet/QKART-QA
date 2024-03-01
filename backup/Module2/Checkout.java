@@ -38,8 +38,7 @@ public class Checkout {
             textArea.sendKeys(addresString);
             WebElement addButton = driver.findElement(By.xpath("//button[text()='Add']"));
             addButton.click();
-            WebDriverWait wait = new WebDriverWait(driver, 3);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='address-item not-selected MuiBox-root css-0']/div[1]/p")));
+
 
             
             return true;

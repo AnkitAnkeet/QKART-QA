@@ -62,9 +62,8 @@ public class Register {
         // Click the register now button
         register_now_button.click();
         // Wait for registration to complete
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        
-        wait.until(ExpectedConditions.or(ExpectedConditions.visibilityOfElementLocated(By.id("notistack-snackbar")),ExpectedConditions.urlContains("/login")));
+        Thread.sleep(5000);
+
 
         this.lastGeneratedUsername = test_data_username;
 

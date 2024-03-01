@@ -29,7 +29,6 @@ public class Home {
             WebElement logout_button = driver.findElement(By.className("MuiButton-text"));
             logout_button.click();
 
-            // SLEEP_STMT_10: Wait for Logout to complete
             // Wait for Logout to Complete
             Thread.sleep(3000);
 
@@ -40,6 +39,7 @@ public class Home {
         }
     }
 
+
     /*
      * Returns Boolean if searching for the given product name occurs without any
      * errors
@@ -49,14 +49,10 @@ public class Home {
             // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 03: MILESTONE 1
             // Clear the contents of the search box and Enter the product name in the search
             // box
-
-            WebElement searchBox = driver.findElement(By.xpath("(//input[@name='search'])[1]"));
+            WebElement searchBox = driver.findElement(By.xpath("(//input[@class='MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd css-b52kj1'])[1]"));
             searchBox.clear();
             searchBox.sendKeys(product);
-            //Thread.sleep(3000);
-            WebDriverWait wait = new WebDriverWait(driver, 5);
-            wait.until(ExpectedConditions.or(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[text()=' No products found ']")),ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='MuiCardContent-root css-1qw96cp']"))));
-
+            Thread.sleep(3000);
             return true;
         } catch (Exception e) {
             System.out.println("Error while searching for a product: " + e.getMessage());
@@ -175,19 +171,15 @@ public class Home {
                     WebElement actualQuantityElement= parentElement.findElement(By.xpath(".//div[@data-testid='item-qty']"));
                     String actualQuantityText = actualQuantityElement.getText();
                     int actualQuantity = Integer.parseInt(actualQuantityText);
-                    WebDriverWait wait = new WebDriverWait(driver, 10);
                     if(quantity > actualQuantity){
                        WebElement plus =parentElement.findElement(By.xpath(".//*[@data-testid='AddOutlinedIcon']"));
                        plus.click();
-                       //Thread.sleep(10000);
-                      
-                       wait.until(ExpectedConditions.textToBePresentInElement(parentElement.findElement(By.xpath(".//div[@data-testid='item-qty']")),String.valueOf(actualQuantity + 1)));
+                       Thread.sleep(10000);
                     }
                      else if(quantity < actualQuantity){
                         WebElement minus =parentElement.findElement(By.xpath(".//*[@data-testid='RemoveOutlinedIcon']"));
                         minus.click();
-                        //Thread.sleep(10000);
-                        wait.until(ExpectedConditions.textToBePresentInElement(parentElement.findElement(By.xpath(".//div[@data-testid='item-qty']")),String.valueOf(actualQuantity - 1)));
+                        Thread.sleep(10000);
                       }else if(quantity == actualQuantity){
                         break;
                       }
@@ -196,11 +188,6 @@ public class Home {
             }
          
             return true;
-
-
-
-
-           
         } catch (Exception e) {
             if (quantity == 0)
                 return true;
@@ -236,4 +223,5 @@ public class Home {
             return false;
         }
     }
+
 }
