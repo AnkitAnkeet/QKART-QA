@@ -302,14 +302,14 @@ public class QkartSanity {
 
         // Place the order
         checkoutPage.placeOrder();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
         // Check if placing order redirected to the Thansk page
         status = driver.getCurrentUrl().endsWith("/thanks");
 
         // Go to the home page
         homePage.navigateToHome();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
         // Log out the user
         homePage.PerformLogout();
