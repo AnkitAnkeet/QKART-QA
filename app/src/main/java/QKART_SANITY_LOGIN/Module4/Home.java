@@ -47,17 +47,18 @@ public class Home {
         try {
             // Clear the contents of the search box and Enter the product name in the search
             // box
-            WebElement searchBox = driver.findElement(By.xpath("//div[@class='MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd search css-11zsshc']/input"));
+            // //div[@class='MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd search css-11zsshc']/input"
+            WebElement searchBox = driver.findElement(By.xpath("//input[@name='search'][1]"));
             searchBox.clear();
             searchBox.sendKeys(product);
             // TODO: CRIO_TASK_MODULE_XPATH - M0 Fix broken Xpath
             WebDriverWait wait = new WebDriverWait(driver,30);
-            wait.until(ExpectedConditions.or(
-                ExpectedConditions.textToBePresentInElementLocated(By.xpath("//p[contains(@class,'css-yg30e6')]"), product),
-                ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='root']/div/div/div[3]/div[1]/div[2]/div/div/div[1]/p[1]"))
-            ));
+            Thread.sleep(3000);
+            wait.until(ExpectedConditions.or(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//input[@name='search'][1]"), product),
+            ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='root']/div/div/div[3]/div[1]/div[2]/div/div"))));
             Thread.sleep(3000);
             return true;
+            
         } catch (Exception e) {
             System.out.println("Error while searching for a product: " + e.getMessage());
             return false;
@@ -90,7 +91,7 @@ public class Home {
         try {
             // Check the presence of "No products found" text in the web page. Assign status
             // = true if the element is *displayed* else set status = false
-            status = driver.findElementByXPath("//*[@id=\"root\"]/div/div/div[3]/div[1]/div[2]/div/h4").isDisplayed();
+            status = driver.findElementByXPath("//*[@id='root']/div/div/div[3]/div[1]/div[2]/div/div").isDisplayed();
             return status;
         } catch (Exception e) {
             return status;
