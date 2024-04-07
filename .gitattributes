@@ -1,4 +1,3 @@
-# 
 # Root folder
 .gitattributes merge=copy-merge
 .gitignore merge=copy-merge
